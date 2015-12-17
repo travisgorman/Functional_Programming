@@ -1,0 +1,78 @@
+### Ex 3: Project an array of videos into an array of {id,title} pairs using forEach()
+For each video, add a projected {id, title} pair to the `videoAndTitlePairs` array.
+
+```js
+function getIdAndTitle () {
+	
+	var newReleases = [
+		{
+			"id": 70111470,
+			"title": "Die Hard",
+			"boxart": "http://cdn-0.nflximg.com/images/2891/DieHard.jpg",
+			"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+			"rating": [4.0],
+			"bookmark": []
+		},
+		{
+			"id": 654356453,
+			"title": "Bad Boys",
+			"boxart": "http://cdn-0.nflximg.com/images/2891/BadBoys.jpg",
+			"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+			"rating": [5.0],
+			"bookmark": [{ id:432534, time:65876586 }]
+		},
+		{
+			"id": 65432445,
+			"title": "The Chamber",
+			"boxart": "http://cdn-0.nflximg.com/images/2891/TheChamber.jpg",
+			"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+			"rating": [4.0],
+			"bookmark": []
+		},
+		{
+			"id": 675465,
+			"title": "Fracture",
+			"boxart": "http://cdn-0.nflximg.com/images/2891/Fracture.jpg",
+			"uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+			"rating": [5.0],
+			"bookmark": [{ id:432534, time:65876586 }]
+		}
+	],
+	videoAndTitlePairs = [];
+
+	newReleases.forEach( (video) =>
+		videoAndTitlePairs.push({id: video.id,title: video.title}) );
+	return videoAndTitlePairs;
+}
+```
+In the above function, as it appears in the exercise,  the array `newReleases` is declared inside the function. If this weren't the case, the function could be modified to take an `arr` parameter to be more flexible. 
+```js
+function projectWithForEach (arr) {
+  var videoAndTitlePairs = [];
+
+  arr.forEach(item => videoAndTitlePairs.push({ 
+    id:item.id, title:item.title 
+  }));
+  return videoAndTitlePairs;
+}
+```
+pass in `newReleases` as the `arr` argument to return an array with only the id's and titles  
+```js
+projectWithForEach (newReleases);
+``` 
+>```js
+[
+	Object {
+		id: 70111470,
+		title: "Die Hard" }, 
+	Object {
+		id: 654356453,
+		title: "Bad Boys" }, 
+	Object {
+		id: 65432445,
+		title: "The Chamber" },
+	Object {
+		id: 675465,
+		title: "Fracture" }
+]
+```
