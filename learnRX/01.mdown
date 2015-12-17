@@ -1,5 +1,6 @@
 ### Exercise 1: Print all names in array to console.
-`names` is an array with 5 names in it. `printWithForLoop()` takes an array, and loops over it and prints every item to the console. 
+`names` is an array with 5 names in it.  
+`printWithForLoop()` takes an array, and loops over it and prints every item to the console. 
 
 ```js
 var names = ["Ben", "Jafar", "Matt", "Priya", "Brian"];
