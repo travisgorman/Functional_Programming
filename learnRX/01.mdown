@@ -15,9 +15,14 @@ Pass `names` into `printWithForLoop()`
 ```js
 printWithForLoop(names);
 ```
->Ben
-Jafar
-Matt
-Priya
-Brian
+>
+Ben  
+Jafar  
+Matt  
+Priya  
+Brian  
+
+
+
+
 
