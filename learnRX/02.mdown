@@ -1,1 +1,21 @@
+### Exercise 2: Use forEach to print all the names in an array
 
+```js
+var names = ["Ben", "Jafar", "Matt", "Priya", "Brian"];
+
+function printWithForEach (arr) {
+  arr.forEach(function(item) {
+    console.log(item);
+  });
+}
+```
+Pass `names` into `printWithForEach()`
+
+```js
+printWithForEach(names);
+```
+>Ben  
+Jafar  
+Matt  
+Priya  
+Brian  
