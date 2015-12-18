@@ -9,3 +9,56 @@ function mapVideoTitlePairs2 (arr) {
 1. `mapVideoTitlePairs2()` takes an array `arr` and calls `map()` on it
 1. For each item in `arr`, the `id` and `title` value/pairs are projected into a new array and returned. 
 
+Pass the `newReleases` array into `mapVideoTitlePairs2()`
+```js
+mapVideoTitlePairs2(newReleases);
+```
+>
+[  
+  { id: 70111470, title: 'Die Hard' },  
+  { id: 654356453, title: 'Bad Boys' },  
+  { id: 65432445, title: 'The Chamber' },  
+  { id: 675465, title: 'Fracture' }  
+]
+  
+My version above is modified for flexibility, so it can take any collection of videos, `newReleases`, `oldReleases`, `travisFavorites`, etc.  In the exercise, the array `newReleases` was declared inside the function and it looked like this
+```js
+function mapVideoTitlePairs() {
+  var newReleases = [
+    {
+      "id": 70111470,
+      "title": "Die Hard",
+      "boxart": "http://cdn-0.nflximg.com/images/2891/DieHard.jpg",
+      "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+      "rating": [4.0],
+      "bookmark": []
+    },
+    {
+      "id": 654356453,
+      "title": "Bad Boys",
+      "boxart": "http://cdn-0.nflximg.com/images/2891/BadBoys.jpg",
+      "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+      "rating": [5.0],
+      "bookmark": [{ id:432534, time:65876586 }]
+    },
+    {
+      "id": 65432445,
+      "title": "The Chamber",
+      "boxart": "http://cdn-0.nflximg.com/images/2891/TheChamber.jpg",
+      "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+      "rating": [4.0],
+      "bookmark": []
+    },
+    {
+      "id": 675465,
+      "title": "Fracture",
+      "boxart": "http://cdn-0.nflximg.com/images/2891/Fracture.jpg",
+      "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+      "rating": [5.0],
+      "bookmark": [{ id:432534, time:65876586 }]
+    }
+  ];
+
+  return newReleases.map(video => ({id:video.id, title:video.title}))
+}
+```
