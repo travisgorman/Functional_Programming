@@ -1,0 +1,11 @@
+### Use map() to project an array of videos into an array of {id,title} pairs
+Repeat the exercise of collecting {id, title} pairs for each video in the `newReleases` array, but this time we'll use `map()`.
+
+```js
+function mapVideoTitlePairs2 (arr) {
+  return arr.map(item => ({id:item.id, title:item.title}));
+}
+```
+1. `mapVideoTitlePairs2()` takes an array `arr` and calls `map()` on it
+1. For each item in `arr`, the `id` and `title` value/pairs are projected into a new array and returned. 
+
