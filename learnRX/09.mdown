@@ -2,7 +2,8 @@
 
 `movieLists` is an array with more than one collection in it— a nested collection, 2D array, or tree. For brevity, I'm good with "tree", so let's go with that. This tree here, has length of 2. Both items are objects, containing collections of their own. Each of their `videos` property holds an inner array. 
 
-What I want to do specifically is return an array with the `id` of all 4 movies in a flat (one dimensional) array. Since there are no parameters at play here, I've got my code wrapped up as an IIFE. 
+What I want to do specifically is return an array with the `id` of all 4 movies in a flat (one dimensional) array.  
+Since there are no parameters at play here, I've got my code wrapped up as an IIFE. 
 
 ```js
 (function() {
@@ -82,10 +83,10 @@ allVideoIdsInMovieLists = [];
   return allVideoIdsInMovieLists;
 ```
 1. Declare `allVideoIdsInMovieLists`, an empty array
-1. Call `forEach` on the `movieLists` array. 
+1. Call `forEach()` on the `movieLists` array. 
 1. `forEach` takes a `list` item and on each item
-1. Call `forEach` which takes a `video` item 
-1. Now we're two layers deep, in the `videos` inner-array
+1. Call `forEach()` which takes a `video` item 
+  * Now we're two layers deep, in the `videos` inner-array
 1. Push the `id` value into `allVideoIdsInMovieLists` 
 
 >[70111470, 654356453, 65432445, 675465]
