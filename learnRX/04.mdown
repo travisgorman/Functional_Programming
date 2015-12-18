@@ -1,5 +1,5 @@
 #Ex. 4 Implement map()
-Add a map() function to the Array type. Map accepts the projection function to be applied to each item in the source array, and returns the projected array.   
+Add a map() function to the Array type. `map()` accepts the projection function to be applied to each item in the source array, and returns the projected array.   
 ```js
 Array.prototype.map = function(projectionFunction) {
   var results = [];
@@ -9,9 +9,9 @@ Array.prototype.map = function(projectionFunction) {
   return results;
 };
 ```
-1. Declare a function on the Array prototype called `map()`
-  * `map()` takes a `projectionFunction` argument. 
-  * `projectionFunction` is any function you want it to be
+1. Declare a function on the `Array.prototype` called `map()`
+  * `map()` takes a `projectionFunction()` argument. 
+  * `projectionFunction()` is any function you want it to be
   * You can pass in a helper function or create a funcion on the spot
 1. Declare `results` array
 1. Call `forEach()` that traverses `this`
