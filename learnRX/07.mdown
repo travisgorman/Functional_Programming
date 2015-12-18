@@ -1,0 +1,23 @@
+### Add a filter() function to the Array type
+The `filter()` function accepts a predicate callback. A predicate is a function that accepts an item in the array, and returns a boolean indicating whether the item should be retained in the new array.
+
+```js
+Array.prototype.filter = function(predicateFunction) {
+  var results = [];
+  this.forEach(function(itemInArray)){
+    if (predicateFunction(itemInArray)) {
+      results.push(itemInArray);
+    }
+  });
+    return results;
+};
+```
+1. Declare a function on the `Array.prototype` called `filter()`
+  * `filter()` takes a `predicateFunction()` argument
+  * `predicateFunction()` acts as a criteria that returns a boolean
+1. An empty array, `results`, is declared 
+1. `forEach` loops an array, calling `predicateFunction()` on each item
+1. If the item passes the test, returning `true`,  
+1. It is pushed into the `results` array
+1. The `results` array is returned
+
