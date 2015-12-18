@@ -1,0 +1,23 @@
+###  Add the concatAll method to the Array prototype
+`concatAll()` is a custom method that does exactly what we just did in exercise 9. It flattens 2D arrays.  
+Nested collections are common. Flattening a 2D array is so useful, there ought to be method on the Array prototype for it. Unlike `map()` and `filter()`, there isn't a built-in method for flattening trees, so we should add one ourselves.  
+
+```js
+Array.prototype.concatAll = function() {
+  var results = [];
+  this.forEach(function(subArray) {
+    subArray.forEach(function(item) {
+      results.push(item);
+    });
+  });
+
+  return results;
+};
+```
+1. Declare a function on `Array.prototype` called `concatAll()`
+1. In the scope of `concatAll()` declare an empty array, `results`
+1. call `forEach()` on `this` - refering to the outermost array
+1. which calls `forEach()` on the inner-array 
+1. On the inner-array `forEach()` takes an `item`,
+1. pushes that `item` into the `results` array, and
+1. returns `results`
