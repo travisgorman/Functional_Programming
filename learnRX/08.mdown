@@ -1,0 +1,84 @@
+### Query Data by Chaining Method Calls
+Chain filter and map to collect the ids of videos that have a rating of 5.0
+
+```js
+function mapAndFilter() {
+  var newReleases = [
+    {
+      "id": 70111470,
+      "title": "Die Hard",
+      "boxart": "http://cdn-0.nflximg.com/images/2891/DieHard.jpg",
+      "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+      "rating": 4.0,
+      "bookmark": []
+    },
+    {
+      "id": 654356453,
+      "title": "Bad Boys",
+      "boxart": "http://cdn-0.nflximg.com/images/2891/BadBoys.jpg",
+      "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+      "rating": 5.0,
+      "bookmark": [{ id:432534, time:65876586 }]
+    },
+    {
+      "id": 65432445,
+      "title": "The Chamber",
+      "boxart": "http://cdn-0.nflximg.com/images/2891/TheChamber.jpg",
+      "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+      "rating": 4.0,
+      "bookmark": []
+    },
+    {
+      "id": 675465,
+      "title": "Fracture",
+      "boxart": "http://cdn-0.nflximg.com/images/2891/Fracture.jpg",
+      "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+      "rating": 5.0,
+      "bookmark": [{ id:432534, time:65876586 }]
+    }
+  ];
+
+  return newReleases.
+      filter( video => video.rating === 5).map( video => video.id);
+}
+```
+1. `filter()` returns an array of all the 5 star videos
+1. which it then calls `map()` on
+1. `map()` takes each video object in the array
+1. and projects the id value into a new array
+1. returning an array with the id's of videos with 5 star ratings
+
+`mapAndFilter();`
+>
+[654356453, 675465]
+___
+
+```js
+function fiveStarVids (array) {
+  return array.filter( video => video.rating === 5)
+              .map( video => video.id);
+}
+```
+Pass any array of videos into `fiveStarVids()` to get the ids of all the 5 star videos in the collection. 
+
+```js
+fiveStarVids(newReleases);
+```
+Returns "Fracture" and "Bad Boys", the two with 5 star ratings. 
+>[654356453, 675465]
+
+How about adding a second parameter to make something more flexible. This limits us to only 5 stars.  
+It might be useful to group videos by other ratings as well. 
+`vidsByRating()` has a second parameter for you to plug in a rating value to return an array with all videos in a collection with that rating.
+```js
+function vidsByRating (array, rating) {
+  return array.filter( video => video.rating === rating)
+              .map( video => video.id);
+}
+```
+Call vidsByRating on the `newReleases` collection, passing in 4 as the `rating` argument
+```js
+vidsByRating(newReleases, 4);
+```
+And we get the id's for "Die Hard" and "The Chamber", the 4 star videos. 
+>[70111470, 65432445]
