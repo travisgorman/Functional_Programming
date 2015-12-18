@@ -1,0 +1,93 @@
+### Flatten a 2D array, `movieLists`, into an array of each videos `id` value
+
+`movieLists` is an array with more than one collection in it— a nested collection, 2D array, or tree. For brevity, I'm good with "tree", so let's go with that. This tree here, has length of 2. Both items are objects, containing collections of their own. Each of their `videos` property holds an inner array. 
+
+What I want to do specifically is return an array with the `id` of all 4 movies in a flat (one dimensional) array. Since there are no parameters at play here, I've got my code wrapped up as an IIFE. 
+
+```js
+(function() {
+  var movieLists = [
+    {
+      name: "New Releases",
+      videos: [
+        {
+          "id": 70111470,
+          "title": "Die Hard",
+          "boxart": "http://cdn-0.nflximg.com/images/2891/DieHard.jpg",
+          "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+          "rating": 4.0,
+          "bookmark": []
+        },
+        {
+          "id": 654356453,
+          "title": "Bad Boys",
+          "boxart": "http://cdn-0.nflximg.com/images/2891/BadBoys.jpg",
+          "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+          "rating": 5.0,
+          "bookmark": [{ id:432534, time:65876586 }]
+        }
+      ]
+    },
+    {
+      name: "Dramas",
+      videos: [
+        {
+          "id": 65432445,
+          "title": "The Chamber",
+          "boxart": "http://cdn-0.nflximg.com/images/2891/TheChamber.jpg",
+          "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+          "rating": 4.0,
+          "bookmark": []
+        },
+        {
+          "id": 675465,
+          "title": "Fracture",
+          "boxart": "http://cdn-0.nflximg.com/images/2891/Fracture.jpg",
+          "uri": "http://api.netflix.com/catalog/titles/movies/70111470",
+          "rating": 5.0,
+          "bookmark": [{ id:432534, time:65876586 }]
+        }
+      ]
+    }
+  ],
+
+// query this tree above (2D array) for video id's
+
+allVideoIdsInMovieLists = [];
+
+  movieLists.forEach (list => {
+    list.videos.forEach (video => {
+      allVideoIdsInMovieLists.push(video.id);
+    });
+  });
+
+  return allVideoIdsInMovieLists;
+
+})();
+```
+Drop that into the console, and you'll get 
+>[70111470, 654356453, 65432445, 675465]
+
+Slow up. Let's take a closer look at that last part
+
+```js
+allVideoIdsInMovieLists = [];
+
+  movieLists.forEach (list => {
+    list.videos.forEach (video => {
+      allVideoIdsInMovieLists.push(video.id);
+    });
+  });
+
+  return allVideoIdsInMovieLists;
+```
+1. Declare `allVideoIdsInMovieLists`, an empty array
+1. Call `forEach` on the `movieLists` array. 
+1. `forEach` takes a `list` item and on each item
+1. Call `forEach` which takes a `video` item 
+1. Now we're two layers deep, in the `videos` inner-array
+1. Push the `id` value into `allVideoIdsInMovieLists` 
+
+>[70111470, 654356453, 65432445, 675465]
+
+1. return `allVideoIdsInMovieLists` 
