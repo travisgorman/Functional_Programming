@@ -12,6 +12,7 @@ Array.prototype.filter = function(predicateFunction) {
     return results;
 };
 ```
+##### Array.prototype.filter
 1. Declare a function on the `Array.prototype` called `filter()`
   * `filter()` takes a `predicateFunction()` argument
   * `predicateFunction()` acts as a criteria that returns a boolean
