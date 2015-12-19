@@ -57,6 +57,7 @@ return movieLists.map( list =>
 ```
 And we get a flat array with all the video id's
 >[70111470, 654356453, 65432445, 675465]
+
 A closer look at what's going on here at the end
 ```js
 return movieLists.map( list => 
