@@ -1,5 +1,6 @@
 ### Project and flatten `movieLists` into an array of video ids
-Use two nested calls to `map()` and one call to `concatAll()`
+`movieLists` contains two collections, "New Releases" and "Dramas", with their own array of movies. I need to get two levels deep, and retrieve the ids of all the movies in both lists. This is done with two nested calls to `map()` and one call to `concatAll()`.
+
 ```js
 (function() {
   var movieLists = [
@@ -56,4 +57,38 @@ Use two nested calls to `map()` and one call to `concatAll()`
     concatAll();
 })();
 
+```
+And we get a flat array with all the video id's
+>[70111470, 654356453, 65432445, 675465]
+
+A closer look at what's going on here at the end
+```js
+return movieLists.map( list => 
+  list.videos.map( video => video.id ))
+  .concatAll();
+
+```
+
+* `map()` over `movieLists` 
+  - with an anonymous callback function that takes a `list` item
+  - That maps over the individual movie lists
+  - First `map()` is called on "New Releases", and then "Dramas"
+  - For each movie in each collection, we want only the `id` value 
+* Nest another `map()` expression 
+  - This `map()` calls an anonymous function that takes a `video` item
+  - `map()` over all the videos in each movie list 
+  - and returns the `id` of each video. 
+* At this point I have a 2 dimensional array
+  - For each movie list, we returned a transformed array
+  - `map()` always returns an array 
+  - What we have looks like this
+
+>```js
+[ [70111470, 654356453], [65432445, 675465] ]
+```
+
+* So we chain `concatAll()` to flatten it 
+
+>```js
+[ 70111470, 654356453, 65432445, 675465 ]
 ```
