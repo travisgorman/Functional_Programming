@@ -76,5 +76,29 @@ He're we're doing the same thing we did before, excpet with a little less code, 
     ) ) );
 })();
 ```
+Hold up. Let's have a look at that. I think this is the tastiest bit of code I've written thus far. 
+
+* Call `map()` on the `movieLists` array, mapping over each `list`
+* Then call `map()` over the `videos` array, mapping over each `video`
+* This time we flatten as we go
+  - `concatMap()` each `list`
+  - `concatMap()` each `video`
+  - `filter()` to find the right boxart `url`
+  - `map()` to project the `title`, `id` and `url` into an array
+
+```js
+return movieLists.
+    concatMap(movieList =>
+      movieList.videos.concatMap( video =>
+        video.boxarts. filter( boxart =>
+          boxart.width === 150 && boxart.height === 200).map( boxart => 
+            ({
+              id:video.id,
+              title:video.title,
+              boxart:boxart.url
+            }) 
+    ) ) );
+```
+
 * Call map() movieLists then mapping over each list
 * This time we flatten as we go
