@@ -123,28 +123,26 @@ Here's a breakdown:
 * Reurn an object 
   - with the `id`, and `title` from the `video` array, and 
   - the `url` from the `boxarts` array
-  - At this point, we have two separate arrays, both are 2 items long
-    + inside each are 2 inner arrays, both only 1 item long
-    + each holding a single video object
+  - At this point, we have a 3 dimensional array. An array of two arrays
+    + inside if which are 2 inner-arrays
+    + each 1 item long, holding a single video object
 
-```js
-[ [{id, title, box}], [{id, title, box}] ]
-
-[ [{id, title, box}], [{id, title, box}] ]
+>```js
+[ [[{...}],[{...}]], [[{...}],[{...}]] ]
 ```
 
 * `concatAll()` to flatten it out
 
-```js
-[ [{ }],[{ }],[{ }],[{ }] ]
+>```js
+[ [{...}],[{...}],[{...}],[{...}] ]
 ```
 
 * That only flattens it from a 3D array to a 2D array
 * `concatAll()` again
 * And get exactly what we want
 
-```js
-[ {},{},{},{} ]
+>```js
+[ {...},{...},{...},{...} ]
 ```
 
 As we see, concatAll() only flattens one level of nesting. Since map() was called 3 times, we must concatAll() twice. concatAll() can take us from a 2D to 1D, or from 3D to 2D and so on.
