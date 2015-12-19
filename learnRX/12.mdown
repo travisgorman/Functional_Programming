@@ -145,5 +145,5 @@ Here's a breakdown:
 [ {...},{...},{...},{...} ]
 ```
 
-As we see, concatAll() only flattens one level of nesting. Since map() was called 3 times, we must concatAll() twice. concatAll() can take us from a 2D to 1D, or from 3D to 2D and so on.
+As we see, `concatAll()` only flattens one level of nesting. Since `map()` was called 3 times, we must `concatAll()` twice. `concatAll()` can take us from a 2D to 1D, or from 3D to 2D and so on.
 
