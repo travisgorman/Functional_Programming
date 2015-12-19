@@ -1,0 +1,15 @@
+### Implement `concatMap()`
+This is just a convenience function that flattens multi-dimensional arrays.  Usually when we use `map()` on nested collections we will want to flatten out the returned array. 
+
+```js
+Array.prototype.concatMap = function(projectionFunctionThatReturnsArray) {
+  return this.
+    map(function(item) {
+    return projectionFunctionThatReturnsArray(item);
+    }).
+    concatAll();
+};
+```
+* Declare a function on the Array protype called `concatMap()`
+* `concatMap()` takes a predicate function that expects to return an array
+* Just a `map()` followed by `concatAll()`
