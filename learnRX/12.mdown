@@ -1,6 +1,6 @@
 ### Query a 3 dimensional array
 This tree just got a bit raunchier. Now every movie in `movieLists` has a `boxarts` array containing objects of varying box art sizes.  
-
+Dealing with nested collections is key to being effective with asyncroious programming
 Retrieve `id`, `title`, and a 150x200 boxart `url` for every video.  Here, we'll use `map()`, `filter()` and `concatAll()`.  
 
 ```js
