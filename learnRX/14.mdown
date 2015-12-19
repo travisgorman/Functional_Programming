@@ -1,4 +1,4 @@
-### Implement `concatMap()`
+### Query a 3D tree with `concatMap()`
 Use `concatMap()` to retrieve `id`, `title`, and 150x200 box art `url` for every video
 
 He're we're doing the same thing we did before, excpet with a little less code, since we've abstracted projection and flattening into one function.
