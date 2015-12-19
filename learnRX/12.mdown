@@ -148,6 +148,7 @@ Here's a breakdown:
 ```
 
 * we call concatAll to flatten it out
+
 >```js
 [ [{...}],[{...}],[{...}],[{...}] ]
 ```
@@ -155,6 +156,7 @@ Here's a breakdown:
 * That only flattens it from a 3D array to a 2D array
 * concatAll() again
 * And get exactly what we want, an array with 4 objects, each containing the title, id and url for the right box art
+
 >```js
 [ {...},{...},{...},{...} ]
 ```
