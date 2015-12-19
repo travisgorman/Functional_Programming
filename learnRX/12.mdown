@@ -1,8 +1,7 @@
 ### Query a 3 dimensional array
-Now every movie in `movieLists` has a new property, `boxarts`, an array of boxart objects of varying sizes.  
-Retrieve `id`, `title`, and a 150x200 boxart `url` for every video.  Here, we'll use `map()`, `filter()` and `concatAll()`.  
+This tree just got a bit raunchier. Now every movie in `movieLists` has a `boxarts` array containing objects of varying box art sizes.  
 
-`map()` to get into nested levels, returning an array with the `id` and `title` values from the `videos` array. From inside the `videos` array, we also `map()` over the `boxarts` array, using `filter()`to  project the `url` of the box art with correct dimensions based on the `width` and `height` properties. `concatAll()` to flatten. 
+Retrieve `id`, `title`, and a 150x200 boxart `url` for every video.  Here, we'll use `map()`, `filter()` and `concatAll()`.  
 
 ```js
 (function() {
