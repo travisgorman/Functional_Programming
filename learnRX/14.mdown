@@ -76,7 +76,8 @@ He're we're doing the same thing we did before, excpet with a little less code, 
     ) ) );
 })();
 ```
-Hold up. Let's have a look at that. I think this is the tastiest bit of code I've written thus far. 
+Let's have a look at that. I think this is the tastiest bit of code so far. 
+## Break it Down
 
 * Call `map()` on the `movieLists` array, mapping over each `list`
 * Then call `map()` over the `videos` array, mapping over each `video`
@@ -99,6 +100,28 @@ return movieLists.
             }) 
     ) ) );
 ```
+Nice. And as expected, this returns a one dimensional array with just what we want. 
+>```js
+[ { 
+      boxart: "http://cdn-0.nflximg.com/images/2891/DieHard150.jpg"
+      id: 70111470
+      title: "Die Hard" 
+    }, 
+  { 
+      boxart: "http://cdn-0.nflximg.com/images/2891/BadBoys150.jpg"
+      id: 654356453
+      title: "Bad Boys" 
+    },
+  { 
+      boxart: "http://cdn-0.nflximg.com/images/2891/TheChamber150.jpg"
+      id: 65432445
+      title: "The Chamber" 
+    },
+  { 
+      boxart: "http://cdn-0.nflximg.com/images/2891/Fracture150.jpg"
+      id: 675465
+      title: "Fracture" 
+    }
+]
+```
 
-* Call map() movieLists then mapping over each list
-* This time we flatten as we go
