@@ -1,6 +1,6 @@
 ### Query a 3 dimensional array
-This tree just got a bit raunchier. Now every movie in `movieLists` has a `boxarts` array containing objects of varying box art sizes.  
-Dealing with nested collections is key to being effective with asyncroious programming
+This tree just got a bit raunchier. Now every movie in `movieLists` has an array containing objects of varying box art sizes.  
+
 Retrieve `id`, `title`, and a 150x200 boxart `url` for every video.  Here, we'll use `map()`, `filter()` and `concatAll()`.  
 
 ```js
@@ -113,3 +113,51 @@ Here's a breakdown:
     .concatAll()
       .concatAll();
 ```
+
+We go three layers in, get what we want, *(retrieve info from different layers)* and return a flat array.  
+Here's a breakdown:
+
+```js
+  return movieLists.map( movieList =>
+    movieList.videos.map( video =>
+      video.boxarts.filter( boxart =>
+        boxart.width === 150 && boxart.height === 200).map( boxart => 
+          ({ id:video.id, title:video.title, boxart:boxart.url }) 
+  ))) 
+    .concatAll()
+      .concatAll();
+```
+
+* map over movieList
+  - mapping through each `list`, return the `videos` inner-array
+    + call `map()` on each `video` item, passing in a call to
+* `filter()` the `boxarts` array. 
+  - if the width is 150 and the height is 200
+    + `map()` over the `boxarts` array (_now on the third level_)
+* Reurn an object 
+  - with the id, and title from the video array, and 
+  - the url from the boxarts array
+  - At this point, we have two separate arrays, both are 2 items long
+    + inside each are 2 inner arrays, both only 1 item long
+    + each holding a single video object
+
+>```js
+[ [{id, title, box}], [{id, title, box}] ]
+
+[ [{id, title, box}], [{id, title, box}] ]
+```
+
+* we call concatAll to flatten it out
+>```js
+[ [{...}],[{...}],[{...}],[{...}] ]
+```
+
+* That only flattens it from a 3D array to a 2D array
+* concatAll() again
+* And get exactly what we want, an array with 4 objects, each containing the title, id and url for the right box art
+>```js
+[ {...},{...},{...},{...} ]
+```
+
+As we see, concatAll() only flattens one level of nesting. Since map() was called 3 times, we must concatAll() twice. concatAll() can take us from a 2D to 1D, or from 3D to 2D and so on.
+
