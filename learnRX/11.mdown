@@ -85,7 +85,7 @@ return movieLists.map( list =>
 [ [70111470, 654356453], [65432445, 675465] ]
 ```
 
-* So we chain `concatAll()` to flatten it 
+* Finally, chain `concatAll()` onto this 2D array to flatten it 
 
 >```js
 [ 70111470, 654356453, 65432445, 675465 ]
@@ -93,5 +93,5 @@ return movieLists.map( list =>
 
 #### footNotes
 * `concatAll()` only works on 2D arrays. It **doesn't** work on objects containing arrays. 
-* use `map()` to transform an object to an array (with what you want in it)
-* If `movielists` weren't divided into the two named genre objects, meaning if it were an array of arrays, we could flatten it `concatAll()` at the top and with and use `map()` to project the `id` values onto an array, returning the same result. 
+* use `map()` to transform an object to an array *(with what you want in it)*
+* If `movielists` were not divided into the two named genre objects, meaning if it were an array of arrays, we could flatten it with `concatAll()` first and then use `map()` to project the `id` values onto an array, returning the same result. 
