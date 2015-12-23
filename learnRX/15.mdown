@@ -1,6 +1,6 @@
 ## Exercise 15
 ### Use forEach to find the largest box art
-`forEach()` over an array to show how you might go through a collection, comparing one item to another.
+Here, I'm using `forEach()` to show how you might go through a collection, comparing one item to another.
 
 ```js
 function bigBox() {
@@ -31,6 +31,8 @@ function bigBox() {
   url: "http://cdn-0.nflximg.com/images/2891/Fracture425.jpg"
 }
 
+#### Break it Down
+
 * Declare Variables
   - `boxarts` - an array of box art items of varying sizes
   - `currentSize` - an undefined variable
@@ -39,6 +41,18 @@ function bigBox() {
     + holds the previous item, until replaced by larger value
   - `largestBoxart` - an undefined variable
     + will hold the `boxart` object of the current largest 
+
+```js
+    boxarts.forEach( boxart => {
+      currentSize = boxart.width * boxart.height;
+      if (currentSize > maxSize) {
+        largestBoxart = boxart;
+        maxSize = currentSize;
+      } 
+    });
+    return largestBoxart;
+```
+
 * `forEach()` over `boxarts`, taking each `boxart` item and
   - multiply width times height and assign value to `currentSize`
   - also assign that value to `maxSize` 
