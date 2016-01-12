@@ -77,12 +77,8 @@ Here `cityLocation()` returns an object containing two closures - `get()` and `s
 
 `get()` obtains the current value of city, while `set()` updates it.   
 
-When `myLocation.get()` is called the second time, it outputs the updated (current) value of city - "Sydney" - rather than the default "Paris".
-
-One interesting feature of closures is that the variables are automatically hidden.  
-
-Closures store data in their enclosed variables without providing direct access to them. 
-The only way to alter those variables is by providing access to them indirectly.  
+One interesting feature of closures is that the variables are automatically hidden. Closures store data in their enclosed variables without providing direct access to them. 
+### The only way to alter those variables is by providing access to them indirectly.  
 
 You cannot access `get()` or `set()` directly. 
 
@@ -109,7 +105,6 @@ cityLocation();
 
 `cityLocation()` is a function, not an object, so trying to get at those methods won't work. You need to assign the returned object to a variable in order to access its methods `get()` and `set()`.  
 
-
 ```js
 var myLocation = cityLocation();  
 ```
@@ -129,7 +124,3 @@ myLocation.set("Austin");
 myLocation.get();
 ```
 >>>'Austin'
-
-
-
-
