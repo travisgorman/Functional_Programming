@@ -17,7 +17,7 @@ This is purely for educational purposes - just to have a look under the hood at 
 ## `forEach`
 Iterate over an input `list`, calling a provided function, `fn` for each element in the list.
 
-### Ramda.js
+### Ramda
 
 ```js
 function forEach( fn, list ) {
@@ -45,7 +45,7 @@ function forEach( fn, list ) {
 * return `list`
 ___
 
-## Underscore
+### Underscore
 
 
 ```js
