@@ -1,7 +1,6 @@
 # Anonymous Functions
 
-An anonymous function is a function definition not bound to an identifier.  
-Also called 'function literal'. 
+An anonymous function is a function definition not bound to an identifier. Also called 'function literal'.
 
 They are functions that are dynamically declared at runtime.
 
@@ -16,7 +15,6 @@ Notable examples are **closures** and **currying**.
 Closures are functions evaluated in an enviornment containing bound variables. 
 
 Some programmers use anonymous functions to encapsulate specific, non-reusable code without litering the code with a lot of little one-line normal functions. 
-
 
 #### WHEN do you use anonymous functions?
 Anonymous functions are typically used as callbacks.  
