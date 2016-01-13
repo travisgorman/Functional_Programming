@@ -7,8 +7,9 @@ Different implementations of higher order functions. Refering mostly to:
 * [Ramda](http://ramdajs.com/0.18.0/docs/)
 * [functional](http://functionaljs.com/)
 
->>> "**Iteratee:** a composable abstraction for processing sequentially presented chunks of input data in a purely functional fashion".  
->>> When refering to a function that is passed into another function, I will say "callback"
+>>> "**Iteratee:** a composable abstraction for processing sequentially presented chunks of input data in a purely functional fashion". 
+
+>>> When refering to a function that is passed into another function, I will say "callback". 
 
 
 This is purely for educational purposes - just to have a look under the hood at how some libraries are writing implementations of native JavaScript higher-order functions. 
