@@ -1,3 +1,49 @@
+# Anonymous Functions
+
+An anonymous function is a function definition not bound to an identifier.  
+Also called 'function literal'. 
+
+They are functions that are dynamically declared at runtime.
+
+They are often used:
+* As the arguments being passed to higher-order functions
+* Used for constructing the result of a higher-order function that needs to return a function
+
+### What are they used for?
+Anonymous functions can be used for containing functionality for short-term use that doesn't need to be named.
+Notable examples are **closures** and **currying**. 
+
+Closures are functions evaluated in an enviornment containing bound variables. 
+
+Some programmers use anonymous functions to encapsulate specific, non-reusable code without litering the code with a lot of little one-line normal functions. 
+
+
+#### WHEN do you use anonymous functions?
+Anonymous functions are typically used as callbacks.  
+
+When a function is only used once or a limited number of times, it might be syntactically lighter. 
+I have been using them mostly for inside functions like `map()`, `forEach()`, and `reduce()`.  
+
+#### When should you NOT use anonymous function?
+
+
+#### HOW do you use anonymous functions?
+Anonymous functions are declared using the **function operator** instead of the function declaration.
+
+Anonymous functions are a form of **nested function**, in allowing access to variables in the scope of the containing function (non-local variables). This means anonymous functions need to be implemented using closures.
+
+Unlike named nested functions, they cannot be recursive without the assistance of a 'fixpoint operator' binding them to a name. 
+
+___
+```js
+function hello(){
+  alert( 'Hello worls' );
+}
+```
+This is a normal *function decalration*. When the `function` keyword is the first thing, that is how you know it is a function declaration. 
+
+Invocation operator is a pair of parentheses that follow any expression that produces a function value
+
 ## Javascript Anonymous Functions
 Declarations can never be anonymous. Expressions can. Function expressions are created with the function operator. All functions are objects. 
 
