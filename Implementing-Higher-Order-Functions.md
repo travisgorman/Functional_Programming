@@ -24,6 +24,7 @@ Iterate over an input `list`, calling a provided function, `fn` for each element
 ```js
 Array.forEach( callback( value, key, collection ) [this] )
 ```
+
 ### Ramda.js
 
 ```js
