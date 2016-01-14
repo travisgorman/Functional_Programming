@@ -18,7 +18,7 @@ Different implementations of higher order functions. Refering mostly to:
 This is purely for educational purposes - just to have a look under the hood at how some libraries are writing implementations of native JavaScript higher-order functions. 
 
 
-## `forEach`
+# `forEach`
 Iterate over an input `list`, calling a provided function, `fn` for each element in the list.
 
 ### Ramda.js
@@ -48,12 +48,9 @@ function forEach( fn, list ) {
     + when `idx` is larger than `len`, break out of the loop.
 * return `list`
 
-
-
 ___
 
 ### Underscore
-
 
 ```js
 _.forEach = function( obj, iteratee, context ) {
@@ -73,8 +70,6 @@ _.forEach = function( obj, iteratee, context ) {
     return obj;
   };
 ```
-
-
 
 ___
 
@@ -163,6 +158,7 @@ fn.each = function ( handler, collection, params ) {
   - `handler` is a function (???)
   - `collection` is an array (maybe also an object)
   - `params` is an array of arguments (??)
+  
 * loop through length of the collection
   - and on each iteration, call this...
 
@@ -190,13 +186,14 @@ function forEach(array, fn) {
     return true;
   }
 ```
-
+Not quite sure how is assigning values to anything. More on this later... 
 
 ___
 
-## map()
+## `map()`
 iterates over a collection, calling a function on each item and projecting the result into a new aray.  
-Returns a new array. Takes one argument, a `callback` (function), with the option to include an argument to specify the `this` keyword (object) .
+Returns a new array. Takes one argument, a `callback` (function), with the option to include an argument to specify the `this` keyword (object).
+
 >>> Syntax
 ```js
 Array.prototype.map( callback( value, key, collection ) [optional: this] );
