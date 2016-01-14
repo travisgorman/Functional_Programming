@@ -7,18 +7,17 @@ Different implementations of higher order functions. Refering mostly to:
 * [Ramda](http://ramdajs.com/0.18.0/docs/)
 * [functional](http://functionaljs.com/)
 
->>> "**Iteratee:** a composable abstraction for processing sequentially presented chunks of input data in a purely functional fashion". 
-
->>> When refering to a function that is passed into another function, I will say "callback". 
+>>> "**Iteratee:** a composable abstraction for processing sequentially presented chunks of input data in a purely functional fashion".  
+>>> When refering to a function that is passed into another function, I will say "callback"
 
 
 This is purely for educational purposes - just to have a look under the hood at how some libraries are writing implementations of native JavaScript higher-order functions. 
 
 
-# `forEach`
+## `forEach`
 Iterate over an input `list`, calling a provided function, `fn` for each element in the list.
 
-### Ramda
+### Ramda.js
 
 ```js
 function forEach( fn, list ) {
@@ -44,6 +43,9 @@ function forEach( fn, list ) {
     + increment `idx` by 1.
     + when `idx` is larger than `len`, break out of the loop.
 * return `list`
+
+
+
 ___
 
 ### Underscore
@@ -52,7 +54,7 @@ ___
 ```js
 _.forEach = function( obj, iteratee, context ) {
     iteratee = optimizeCb( iteratee, context );
-    
+
     var i, length;
     if ( isArrayLike( obj ) ) {
       for (i = 0, length = obj.length; i < length; i++) {
@@ -67,6 +69,9 @@ _.forEach = function( obj, iteratee, context ) {
     return obj;
   };
 ```
+
+
+
 ___
 
 ### Lodash
@@ -98,3 +103,78 @@ lodash uses an internal function called `iterator()` that takes three arguments,
   - call `iterator` and pass in the `value`, `key` and `collection` the same way as above. 
 
 * There is no return statement because ...? (the original array/object is modified)
+
+___
+
+### Underbar
+Exactly the same as Lodash
+
+```js
+  _.each = function( collection, iterator ) {
+    if (Array.isArray( collection )) {
+      for ( var i = 0; i < collection.length; i++ ){
+        iterator( collection[i], i, collection );
+      }
+    } else {
+      for ( var k in collection ) {
+        iterator( collection[k], k, collection );
+      }  
+    }
+  };
+```
+
+___
+
+### fn
+Okay... this seems like a bit much for something that already comes with JavaScript, but this guy wants to do it his way, and I can get down with that. I'm not at the point yet where I quite understand the whole 'more functional' point of view, but either way, I'm happy to see something different.  
+
+In `fn.each()` he uses `fn.apply()` and `fn.concat()`, which seem to do the same thing the native Array.prototype methods do. 
+
+```js
+fn.apply = function ( handler, args) {
+  return handler.apply( null, args);
+};
+
+fn.concat = function () {
+  var args = fn.toArray(arguments);
+  var first = args[ 0 ];
+
+  if (!fn.is('array', first) && !fn.is('string', first)) {
+    first = args.length ? [ first ] : [ ];
+  }
+
+  return first.concat.apply(first, args.slice(1));
+};
+
+//*  */*  */*  */*  */ fn.each
+
+fn.each = function ( handler, collection, params ) {
+  for ( var index = 0, collectionLength = collection.length; index < collectionLength; index++) {
+    fn.apply( handler, fn.concat( [ collection[ index ], index, collection ], params));
+  }
+};
+```
+
+* `fn.each` takes a `handler`, a `collection` and `params`
+  - `handler` is a function (???)
+  - `collection` is an array (maybe also an object)
+  - `params` is an array of arguments (??)
+* loop through length of the collection
+  - and on each iteration, call this...
+
+```js
+fn.apply( handler, fn.concat( [ collection[ index ], index, collection ], params));
+```
+* Apply takes a handler and an array of arguments - so everything after handler is building an array or arguments
+* The handler function is called passing in the right arguments. 
+
+___
+
+
+
+
+
+
+
+
+  
