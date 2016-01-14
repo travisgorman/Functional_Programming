@@ -6,6 +6,10 @@ Different implementations of higher order functions. Refering mostly to:
 * [Underbar]
 * [Ramda](http://ramdajs.com/0.18.0/docs/)
 * [functional](http://functionaljs.com/)
+* [lazy](http://danieltao.com/lazy.js/docs/)
+* [wu](https://fitzgen.github.io/wu.js/)
+* [bacon](https://github.com/baconjs/bacon.js/tree/master/src)
+* [sloth](https://rfw.name/sloth.js/)
 
 >>> "**Iteratee:** a composable abstraction for processing sequentially presented chunks of input data in a purely functional fashion".  
 >>> When refering to a function that is passed into another function, I will say "callback"
@@ -170,19 +174,62 @@ fn.apply( handler, fn.concat( [ collection[ index ], index, collection ], params
 
 ___
 
-# map()
-Iterates over a collection, calling a function on each item - projecting the result into a new aray.  
-Takes one argument, a `callback` (function), with the option to include an argument to specify the `this` keyword (object) .  
-Returns a new array.  
+### lazy
+
+```js
+function forEach(array, fn) {
+    var i = -1,
+        len = array.length;
+
+    while ( ++i < len ) {
+      if ( fn( array[i], i) === false) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+```
+
+
+___
+
+## map()
+iterates over a collection, calling a function on each item and projecting the result into a new aray.  
+Returns a new array. Takes one argument, a `callback` (function), with the option to include an argument to specify the `this` keyword (object) .
 >>> Syntax
 ```js
 Array.prototype.map( callback( value, key, collection ) [optional: this] );
 ```
 
+### Ramda
 
+```js
+function _map( fn, functor ){
+  var idx = 0;
+  var len = functor.length;
+  var result = Array( len );
+  while ( idx < len ){
+    result [idx] = fn( functor [idx] );
+    idx += 1;
+  }
+  return result;
+};
+```
+* Takes two arguments - fn, a `function`, and `functor`, an array
+* Create an empty array the same length as `functor` and assign it to variable `results`
+  - if i'm mapping an array 4 items long, i create an array called `result` that looks like
 
+```js
+result = [ undefined, undefined, undefined, undefined ]
+```
+  - Instead of creating an empty array and then later pushing items into it, we're assigning values this list of `undefined`'s
 
+* use a while loop, and on each element in the `functor` array, change the value of one of my `undefined`s to the return value of `fn` called on the next item in the `functor` array
 
+```js
+result [idx] = fn( functor [idx] );
+```
 
+___
 
-  
