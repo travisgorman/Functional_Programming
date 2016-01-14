@@ -15,7 +15,7 @@ Different implementations of higher order functions. Refering mostly to:
 This is purely for educational purposes - just to have a look under the hood at how some libraries are writing implementations of native JavaScript higher-order functions. 
 
 
-## `forEach`
+# `forEach`
 Iterate over an input `list`, calling a provided function, `fn` for each element in the list.
 
 ### Ramda
@@ -67,3 +67,34 @@ _.forEach = function( obj, iteratee, context ) {
     return obj;
   };
 ```
+___
+
+### Lodash
+lodash uses an internal function called `iterator()` that takes three arguments, `value`, `key`, and `collection`. These are the same as the parameters the callback on JavaScripts `Array.prototype.forEach` (MDN calls it `currentValue`, `index`, and `array`). Unlike the native `forEach`, this handles non-array objects.
+
+```js
+  _.each = function(collection, iterator) {
+    if (Array.isArray( collection ) ) {
+      for ( var i = 0; i < collection.length; i++ ){
+        iterator( collection[i], i, collection );
+      }
+    } else {
+      for (var k in collection) {
+        iterator( collection[k], k, collection );
+      }  
+    }
+  };
+```
+* Takes two arguments, `collection` (an array or object), and `iterator` (a function)
+* If it's an array - use a 'for loop'
+  - loop length of the array
+  - on each iteration, call `iterator` and pass in the `value`, `key` and `collection`
+    + `value` = the current value - `collection[i]`
+    + `key` = the index - `i` the thing you increment to traverse an array
+    + `collection` = the array or object you passed in
+    
+* If it's an object - use a 'while loop'
+  - declare variable `k` as your index
+  - call `iterator` and pass in the `value`, `key` and `collection` the same way as above. 
+
+* There is no return statement because ...? (the original array/object is modified)
