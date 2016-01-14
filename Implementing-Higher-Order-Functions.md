@@ -170,6 +170,14 @@ fn.apply( handler, fn.concat( [ collection[ index ], index, collection ], params
 
 ___
 
+# map()
+Iterates over a collection, calling a function on each item - projecting the result into a new aray.  
+Takes one argument, a `callback` (function), with the option to include an argument to specify the `this` keyword (object) .  
+Returns a new array.  
+>>> Syntax
+```js
+Array.prototype.map( callback( value, key, collection ) [optional: this] );
+```
 
 
 
